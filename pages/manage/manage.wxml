@@ -1,0 +1,99 @@
+<view class="header">
+    <view>
+        <view>
+            <view class="weui-search-bar">
+                <view class="weui-search-bar__form">
+                    <!-- 搜索框 -->
+                    <view class="weui-search-bar__box">
+                        <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                        <input type="text" class="weui-search-bar__input" placeholder="请输入站点名称"
+                            model:value='{{name}}' />
+                    </view>
+                </view>
+                <!-- 搜索按钮,调用搜索查询方法 -->
+                <view class="weui-search-bar__cancel-btn" bindtap='search'>搜索</view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<view class="body">
+    <view class="operation">
+        <view class="operation_data" style="color:#1BBA73; display: none;">
+            {{headerMsg.status}}
+        </view>
+        <view class="operation_data" style="color:#F93333; display: block;">
+            {{headerMsg.status}}
+        </view>
+        <view class="operation_text">
+            运行情况
+        </view>
+    </view>
+    <view class="sites">
+        <view class="sites_data">
+            {{headerMsg.siteCount}}
+        </view>
+        <view class="sites_text">
+            站点总数
+        </view>
+    </view>
+    <view class="transformer">
+        <view class="transformer_data">
+            {{headerMsg.transCount}}
+        </view>
+        <view class="transformer_text">
+            变压器总数
+        </view>
+    </view>
+    <view class="monitoring_warning">
+        <view class="monitoring_warning_text">监控预警</view>
+        <view class="monitoring_warning_message">
+            <view class="warning" bindtap="warning">
+                <view class="warn_num">
+                    {{headerMsg.commonSiteCount}}
+                </view>
+                <view class="warn_text">
+                    正常站点
+                </view>
+            </view>
+            <view class="warning" bindtap="warning">
+                <view class="warn_num" style="color: #F93333;">
+                    {{ headerMsg.errSiteCount}}
+                </view>
+                <view class="warn_text">
+                    正在报警
+                </view>
+            </view>
+            <view class="warning" bindtap="warning">
+                <view class="warn_num" style="color: #1BBA73;">
+                    {{headerMsg.repairCount}}
+                </view>
+                <view class="warn_text">
+                    成功修复
+                </view>
+            </view>
+        </view>
+
+
+    </view>
+</view>
+
+<view class="zhandian">
+    站点汇总
+</view>
+
+<view class="detail-message" bindtap="goDetail" wx:for="{{message}}" wx:for-item="array">
+    <i-card title='站点{{array.siteId}}' i-class="detail-message" extra="" thumb="../../img/zhandian.png">
+        <view slot="content">
+            <view class="address">
+                地址 : <text>{{array.location}}</text>
+            </view>
+            <view class="byqNum">
+                变压器数量 : <text>{{array.transNumbers}}</text>
+            </view>
+            <view class="yunxing">
+                运行情况 : <text>{{array.status}}</text>
+            </view>
+        </view>
+    </i-card>
+</view>

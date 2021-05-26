@@ -1,0 +1,24 @@
+/* pages/detail/detail.wxss */
+.detail-message{
+margin-top: 10rpx;
+}
+.button-content{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.content{
+	height: 150rpx;
+}
+.button{
+	display:block;
+	width: 200rpx;
+	border-radius: 40rpx;
+	color: #fff;
+	background-color:#2D8CF0;
+}
+.temperature, .humidity,.smoke_concentration,.status{
+	font-size: 32rpx;
+}
+
+

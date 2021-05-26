@@ -1,0 +1,23 @@
+<view class="i-swipeout-demo">
+    <i-swipeout i-class="i-swipeout-demo-item" actions="{{actions}}" wx:for="{{warn_message}}" wx:for-item="array"
+        wx:for-index="index" data-index="{{index}}" bindchange="handlerCloseButton">
+        <view slot="content" bindtap="goCharts">
+            <i-cell i-class="i-cell-padding" title="" label="">
+                <view slot="content" class="content">
+                    <view class="byqID">
+                        <text class="iconfont icon-dizhi"></text>
+                        地址 : <text>{{array.location}}</text>
+                    </view>
+                    <view class="address">
+                        <text class="iconfont icon-bianyaqi"></text>
+                        变压器 : <text>{{array.transId}}号</text>
+                    </view>
+                    <view class="status" style="color: red;">
+                        <text class="iconfont icon-yichang"></text>
+                        警告 : <text>{{array.errMsg}}异常</text>
+                    </view>
+                </view>
+            </i-cell>
+        </view>
+    </i-swipeout>
+</view>

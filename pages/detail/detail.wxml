@@ -1,0 +1,20 @@
+<!--pages/detail/detail.wxml-->
+<view class="detail-message" bindtap="goCharts" wx:for="{{message}}" wx:for-item="array">
+    <i-card title="变压器{{array.transId}}" i-class="detail-message" extra="变压器{{array.transId}}"
+        thumb="../../img/transformer2.png">
+        <view slot="content" class="content">
+            <view class="temperature">
+                温度 : <text> {{array.temperature}} ℃</text>
+            </view>
+            <view class="humidity">
+                湿度 : <text> {{array.humidity}} RH%</text>
+            </view>
+            <view class="smoke_concentration">
+                烟雾 : <text> {{array.smokeConcentration}} mg/m³ </text>
+            </view>
+            <view class="status">
+                状态 : <text>{{array.status}} </text>
+            </view>
+        </view>
+    </i-card>
+</view>

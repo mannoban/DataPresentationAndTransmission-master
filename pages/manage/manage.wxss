@@ -1,0 +1,124 @@
+/* pages/manage/manage.wxss */
+
+.operation,.sites,.transformer,.warning{
+	display: inline-block;
+	margin-top: 50rpx;
+	margin-left: 20rpx;
+	width: 30%;
+	height: 180rpx;
+	background-color:rgb(243, 241, 241) ;
+	border-radius: 20rpx;
+	text-align: center;
+}
+.operation_data,.sites_data,.transformer_data,.warn_num{
+display: flex;
+justify-content: center;
+margin-top: 45rpx;
+font-weight: bolder;
+font-size: 50rpx;
+}
+
+.operation_text,.sites_text,.transformer_text,.warn_text{
+margin-top: 10rpx;
+color:#52596B;
+}
+.weui-search-bar {
+	position: relative;
+	padding: 8px 10px;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	box-sizing: border-box;
+	background-color: #EFEFF4;
+	border-top: 1rpx solid #D7D6DC;
+	border-bottom: 1rpx solid #D7D6DC;
+  }
+  .weui-icon-search_in-box {
+	position: absolute;
+	left: 10px;
+	top: 7px;
+  }
+  .weui-search-bar__form {
+	position: relative;
+	-webkit-box-flex: 1;
+	-webkit-flex: auto;
+			flex: auto;
+	border-radius: 5px;
+	background: #FFFFFF;
+	border: 1rpx solid #E6E6EA;
+  }
+  .weui-search-bar__box {
+	position: relative;
+	padding-left: 30px;
+	padding-right: 30px;
+	width: 100%;
+	box-sizing: border-box;
+	z-index: 1;
+	/* border-radius: 100rpx; */
+  }
+  .weui-search-bar__input {
+	height: 28px;
+	line-height: 28px;
+	font-size: 14px;
+  }
+  .weui-search-bar__cancel-btn {
+	margin-left: 10px;
+	line-height: 28px;
+	color:#52596B;
+	white-space: nowrap;
+  }
+  
+.details{
+position:absolute;
+left: 30%;
+bottom: 50rpx;
+}
+.button{
+	display:block;
+	width: 200rpx;
+	border-radius: 40rpx;
+	color: #fff;
+	background-color:#ff6a00;
+}
+.monitoring_warning_text,.zhandian{
+	margin-top: 30rpx;
+	margin-left: 20rpx;
+	font-size: 36rpx;
+	font-weight: bold;
+	/* color:#b34b063d ; */
+}
+.monitoring_warning_message{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	border-radius: 40rpx;
+}
+.warning{
+	margin-top: 15rpx;
+	margin-left: 0;
+	width: 50%;
+	border-radius: 0;
+}
+.detail-message{
+	margin-top: 10rpx;
+	}
+	.button-content{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.content{
+		height: 150rpx;
+	}
+	.button{
+		display:block;
+		width: 200rpx;
+		border-radius: 40rpx;
+		color: #fff;
+		background-color:#2D8CF0;
+	}
+	.address,.yunxing,.byqNum{
+		margin-top: 20rpx;
+		font-size: 35rpx;
+	}
