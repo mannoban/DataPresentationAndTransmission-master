@@ -13,7 +13,7 @@ Page({
       {
         trans_id: 1,
         status: 'true',
-        temperature: '10℃',
+        temperature: '10',
         humidity: '20',
         smoke_concentration: '15',
         status_text: '异常'
@@ -21,7 +21,7 @@ Page({
       {
         trans_id: 2,
         status: 'false',
-        temperature: '10℃',
+        temperature: '10',
         humidity: '20',
         smoke_concentration: '15',
         status_text: '正常'
@@ -29,7 +29,7 @@ Page({
       {
         trans_id: 3,
         status: 'true',
-        temperature: '10℃',
+        temperature: '10',
         humidity: '20',
         smoke_concentration: '15',
         status_text: '异常'
@@ -37,16 +37,21 @@ Page({
       {
         trans_id: 4,
         status: 'true',
-        temperature: '10℃',
+        temperature: '10',
         humidity: '20',
         smoke_concentration: '15',
         status_text: '异常'
       }
-    ]
+    ],
+    queryBean: {},
   },
-  goCharts: function (param) {
+  goCharts: function (e, param) {
+    let that = this;
+    // 拿到点击的index下标
+    let index = e.currentTarget.dataset.index;
+    let queryChart = JSON.stringify(that.data.message[index])
     wx.navigateTo({
-      url: '../charts/charts',
+      url: '../charts/charts?queryChart=' + queryChart,
       success: function (res) {
         // success
       },
@@ -62,20 +67,26 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let that = this
-    // 所有变压器信息
-    utils.request("/trans-info/getlastinfo/1", this.data, 'GET', (res) => {
+    // 获取首页的站点的id
+    let that = this;
+    let queryBean = JSON.parse(options.queryBean)
+    that.setData({
+      queryBean: queryBean
+    })
+    let siteId = that.data.queryBean.siteId;
+    // 请求所有变压器信息
+    utils.request(`/trans-info/getlastinfo/${siteId}`, this.data, 'GET', (res) => {
       that.setData({
         message: res.data.data
       })
     })
+
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-
+  onReady: function (options) {
   },
 
   /**

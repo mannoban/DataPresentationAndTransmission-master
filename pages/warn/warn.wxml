@@ -1,7 +1,7 @@
 <view class="i-swipeout-demo">
     <i-swipeout i-class="i-swipeout-demo-item" actions="{{actions}}" wx:for="{{warn_message}}" wx:for-item="array"
         wx:for-index="index" data-index="{{index}}" bindchange="handlerCloseButton">
-        <view slot="content" bindtap="goCharts">
+        <view slot="content" wx:for-index="index" data-index="{{index}}" bindtap="goCharts">
             <i-cell i-class="i-cell-padding" title="" label="">
                 <view slot="content" class="content">
                     <view class="byqID">

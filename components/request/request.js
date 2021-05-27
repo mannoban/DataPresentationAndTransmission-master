@@ -6,10 +6,10 @@ export const request = (url, data, method, success, fail, loading = true) => {
     }
     let that = this;
     wx.request({
-        url: "http://10.111.243.52:8888/smart_power_diagnosis_platform" + url,
+        url: "http://www.zero-face.top:9999/smart_power_diagnosis_platform" + url,
         data: data,
         method: 'GET' || method, // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-        header: { "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJvcGVuaWQiOiIyNDI1NDYiLCJleHAiOjE2MjIwMzQ1ODZ9.CYcYABZDgCEdRZ_DXj1j2DuPgvLT31mYTvcaTDaLrKY" }, // 设置请求的 header
+        header: { "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJvcGVuaWQiOiIyNDI1NDYiLCJleHAiOjE2MjI2Mzk4NTl9.RvSredWhz5IlroNkI0NNoc7Xg16sFqctebpvm5QhgHg" }, // 设置请求的 header
         success:
             function (res) {
                 // success

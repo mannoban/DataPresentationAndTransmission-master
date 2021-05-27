@@ -3,6 +3,7 @@
   ec-canvas {
     position: absolute;
     margin-top: 420rpx;
+    /* margin-left: 15rpx; */
     width: 730rpx;
     height: 1200rpx;
   }

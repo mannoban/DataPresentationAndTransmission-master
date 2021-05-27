@@ -64,7 +64,7 @@
                     正在报警
                 </view>
             </view>
-            <view class="warning" bindtap="warning">
+            <view class="warning">
                 <view class="warn_num" style="color: #1BBA73;">
                     {{headerMsg.repairCount}}
                 </view>
@@ -82,7 +82,8 @@
     站点汇总
 </view>
 
-<view class="detail-message" bindtap="goDetail" wx:for="{{message}}" wx:for-item="array">
+<view class="detail-message" bindtap="goDetail" wx:for="{{message}}" wx:for-item="array" wx:for-index="index"
+    data-index="{{index}}">
     <i-card title='站点{{array.siteId}}' i-class="detail-message" extra="" thumb="../../img/zhandian.png">
         <view slot="content">
             <view class="address">

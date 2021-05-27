@@ -42,7 +42,7 @@
   "compileType": "miniprogram",
   "libVersion": "2.16.1",
   "appid": "wx0db088100c6111b4",
-  "projectname": "miniprogram-5",
+  "projectname": "智能电力监测",
   "debugOptions": {
     "hidedInDevtools": []
   },

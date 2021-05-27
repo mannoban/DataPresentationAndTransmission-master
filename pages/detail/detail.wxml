@@ -1,5 +1,6 @@
 <!--pages/detail/detail.wxml-->
-<view class="detail-message" bindtap="goCharts" wx:for="{{message}}" wx:for-item="array">
+<view class="detail-message" bindtap="goCharts" wx:for="{{message}}" wx:for-item="array" wx:for-index="index"
+    data-index="{{index}}">
     <i-card title="变压器{{array.transId}}" i-class="detail-message" extra="变压器{{array.transId}}"
         thumb="../../img/transformer2.png">
         <view slot="content" class="content">

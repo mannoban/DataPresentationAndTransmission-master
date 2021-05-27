@@ -74,7 +74,7 @@ Page({
   // 发送已解决请求
   handlerCloseButton(e) {
     // 删除前端数据
-    console.log(e.currentTarget.dataset.index);
+    // console.log(e.currentTarget.dataset.index);
     let index = e.currentTarget.dataset.index;
     let warn_message = this.data.warn_message;
     warn_message.splice(index, 1)
@@ -82,16 +82,24 @@ Page({
       warn_message: warn_message,
       toggle2: this.data.toggle2 ? false : true
     });
+    // 发送已解决请求
+    utils.request()
   },
+
+
   actionsTap() {
     this.setData({
       visible2: true
     });
   },
+
   // 跳转详情页面
   goCharts: function (e) {
+    let that = this;
+    let index = e.currentTarget.dataset.index;
+    let queryChart = JSON.stringify(that.data.warn_message[index]);
     wx.navigateTo({
-      url: '../charts/charts',
+      url: '../charts/charts?queryChart=' + queryChart,
       success: function (res) {
         // success
       },

@@ -7,6 +7,7 @@ Page({
   data: {
     motto: 'Hello World',
     userInfo: {},
+    display: "none",
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     canIUseGetUserProfile: false,
@@ -27,44 +28,15 @@ Page({
         }
       }
     });
-    // 登录
-    // wx.login({
-    //   success: function (res) {
-    //     if (res.code) {
-    //       console.log(res.code);
-    //       //发起网络请求
-    //       wx.request({
-    //         url: "http://10.111.243.52:8888/smart_power_diagnosis_platform/user-info/code",
-    //         header: {
-    //           "Content-Type": "application/x-www-form-urlencoded"
-    //         },
-    //         method: 'POST',
-    //         data: {
-    //           code: res.code
-    //         },
-    //         success: function (res) {
-    //           const that = this
-    //           console.log("======");
-    //           console.log(res);
-    //           console.log(res.data.data.token);
-    //           if (res.data.status == "success") {
-    //             let token = res.data.data.token;
-    //             window.localStorage.setItem("token", token);
-    //             console.log(token);
-    //           }
-    //         },
-    //         fail: function (res) {
-    //         }
-    //       })
-    //     }
-    //   },
-    //   fail: function (res) {
-    //   }
-    // })
   },
 
   bindGetUserInfo(e) {
-    console.log(e.detail.userInfo)
+    let userInfo = e.detail.userInfo;
+    this.setData({
+      userInfo: userInfo,
+      display: "block"
+    })
+    console.log(this.data.userInfo);
   },
 
   getUserProfile(e) {

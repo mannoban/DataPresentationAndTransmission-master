@@ -1,5 +1,6 @@
 const utils = require('../../components/request/request')
-
+let siteId; //站点id
+let transId; //变压器id
 // 获取屏幕像素比
 const getPixelRatio = function () {
   let pixelRatio = 0;
@@ -15,8 +16,6 @@ let dpr = getPixelRatio()
 
 import * as echarts from '../../ec-canvas/echarts';
 const app = getApp();
-var list = [1, 4, 6, 8]
-var list1 = [90, 30, 490, 39]
 function initChart(canvas, width, height) {
   const chart = echarts.init(canvas, null, {
     width: width,
@@ -117,8 +116,9 @@ function initChart(canvas, width, height) {
     ]
   };
 
-  // 变压器信息详情接口
-  utils.request("/trans-info/gethistoryinfo/2/1", '', 'GET', (res) => {
+  // 变压器详细信息接口
+  utils.request(`/trans-info/gethistoryinfo/${siteId}/${transId}`, '', 'GET', (res) => {
+
     let message = res.data.data;
     option.series[0].data = [...message.temperature];
     option.series[1].data = [...message.humidity];
@@ -128,8 +128,10 @@ function initChart(canvas, width, height) {
   canvas.setChart(chart);
   return chart;
 }
+
 Page({
   data: {
+    queryChart: {},//上一个页面传递的参数
     current: 0,  //当前所在页面的 index
     indicatorDots: false, //是否显示面板指示点
     autoplay: true, //是否自动切换
@@ -182,15 +184,23 @@ Page({
 
 
   onLoad: function (options) {
-    // 获取图片接口
-    utils.request("/trans-info/gethistoryinfo/1/1", '', 'GET', (res) => {
-      let that = this;
+    let that = this;
+    let queryChart = JSON.parse(options.queryChart);
+    that.setData({
+      queryChart: queryChart
+    })
+    siteId = that.data.queryChart.siteId
+    transId = that.data.queryChart.transId;
+
+    // 获取变压器实时图片接口
+    utils.request(`/trans-info/gethistoryinfo/${siteId}/${transId}`, '', 'GET', (res) => {
       let message = res.data.data;
       let picUrl = message.picture;
-      console.log(picUrl);
       that.setData({
         imgUrls: [...message.picture],
       })
     })
-  }
+
+  },
+
 })

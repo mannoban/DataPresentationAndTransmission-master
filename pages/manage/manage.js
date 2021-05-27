@@ -1,6 +1,7 @@
 // pages/test/test.js
 const { $Message } = require('../../dist/base/index');
 const utils = require('../../components/request/request')
+const message = [];
 Page({
   /**
    * 页面的初始数据
@@ -15,30 +16,30 @@ Page({
       repairCount: 0
     },
     message: [
-      // {
-      //   siteId: "01",
-      //   location: "陕西科技大学站",
-      //   transNumbers: 2,
-      //   status: "正常"
-      // },
-      // {
-      //   siteId: "02",
-      //   location: "陕西科技大学站",
-      //   transNumbers: 4,
-      //   status: "正常"
-      // },
-      // {
-      //   siteId: "03",
-      //   location: "陕西科技大学站",
-      //   transNumbers: 5,
-      //   status: "正常"
-      // },
-      // {
-      //   siteId: "04",
-      //   location: "西安工业大学站",
-      //   transNumbers: 6,
-      //   status: "正常"
-      // }
+      {
+        siteId: "01",
+        location: "陕西科技大学站",
+        transNumbers: 2,
+        status: "正常"
+      },
+      {
+        siteId: "02",
+        location: "陕西科技大学站",
+        transNumbers: 4,
+        status: "正常"
+      },
+      {
+        siteId: "03",
+        location: "陕西科技大学站",
+        transNumbers: 5,
+        status: "正常"
+      },
+      {
+        siteId: "04",
+        location: "西安工业大学站",
+        transNumbers: 6,
+        status: "正常"
+      }
     ]
   },
   handleWarning() {
@@ -50,28 +51,27 @@ Page({
 
 
   // 查询搜索的接口方法
-  search: function () {
+  search: function (e) {
     // 判断输入
     let pattern = /[\u4E00-\u9FA5\uf900-\ufa2d]/;
-    let str = this.data.name
+    let str = this.data.name;
     if (!pattern.test(str)) {
       wx.showModal({
         title: "提示",
         content: "请输入正确的站点名称"
       })
     } else {
-      wx.navigateTo({
-        url: '../detail/detail',
-        success: function (res) {
-          // success
-        },
-        fail: function () {
-          // fail
-        },
-        complete: function () {
-          // complete
+      for (const item of message) {
+        switch (str) {
+          case item.location:
+            wx.navigateTo({
+              url: '../detail/detail',
+            })
+            break;
+          default:
+            break;
         }
-      })
+      }
     }
   },
 
@@ -92,9 +92,13 @@ Page({
   },
 
   // 跳转详情页面
-  goDetail: function () {
+  goDetail: function (e) {
+    let that = this;
+    //拿到点击的index下标
+    let index = e.currentTarget.dataset.index
+    let queryBean = JSON.stringify(that.data.message[index])
     wx.navigateTo({
-      url: '../detail/detail',
+      url: '../detail/detail?queryBean=' + queryBean,
       success: function (res) {
         // success
       },
@@ -124,11 +128,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let that = this; //解决this指向问题
-
+    let that = this;
     // 获取所有站点信息
     utils.request("/ele-site/get_all_siteinfo", this.data, 'GET', (res) => {
-      const message = [];
       for (const item of res.data.data) {
         message.push({
           siteId: item.siteId,
