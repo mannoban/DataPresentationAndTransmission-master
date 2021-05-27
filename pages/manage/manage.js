@@ -61,16 +61,33 @@ Page({
         content: "请输入正确的站点名称"
       })
     } else {
-      for (const item of message) {
-        switch (str) {
-          case item.location:
-            wx.navigateTo({
-              url: '../detail/detail',
-            })
-            break;
-          default:
-            break;
-        }
+      switch (str) {
+        case "陕西科技大学站":
+          wx.navigateTo({
+            url: '../detail/detail?siteId=1',
+          })
+          break;
+        case "西安工业大学站":
+          wx.navigateTo({
+            url: '../detail/detail?siteId=2',
+          })
+          break;
+        case "陕西省西安市高陵区站":
+          wx.navigateTo({
+            url: '../detail/detail?siteId=3',
+          })
+          break;
+        case "重庆大学站":
+          wx.navigateTo({
+            url: '../detail/detail?siteId=4',
+          })
+          break;
+        default:
+          wx.showModal({
+            title: "提示",
+            content: "该站点不存在"
+          })
+          break;
       }
     }
   },
@@ -128,6 +145,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
     let that = this;
     // 获取所有站点信息
     utils.request("/ele-site/get_all_siteinfo", this.data, 'GET', (res) => {

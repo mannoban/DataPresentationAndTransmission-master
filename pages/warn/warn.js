@@ -71,21 +71,28 @@ Page({
     }, 2000);
   },
 
-  // 发送已解决请求
+  // 已解决按钮
   handlerCloseButton(e) {
-    // 删除前端数据
-    // console.log(e.currentTarget.dataset.index);
     let index = e.currentTarget.dataset.index;
     let warn_message = this.data.warn_message;
+    let siteid = warn_message[index].siteId;
+    let transid = warn_message[index].transId;
+    // 发送已解决请求
+    utils.request(
+      `/transfrom/restore/${siteid}/${transid} `,
+      '',
+      'GET',
+      (res) => {
+        console.log("成功发送");
+      },
+    )
+    // 删除前端数据
     warn_message.splice(index, 1)
     this.setData({
       warn_message: warn_message,
       toggle2: this.data.toggle2 ? false : true
     });
-    // 发送已解决请求
-    utils.request()
   },
-
 
   actionsTap() {
     this.setData({
@@ -131,7 +138,6 @@ Page({
       })
     })
   }
-
 });
 
 

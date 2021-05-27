@@ -47,7 +47,6 @@ Page({
   },
   goCharts: function (e, param) {
     let that = this;
-    // 拿到点击的index下标
     let index = e.currentTarget.dataset.index;
     let queryChart = JSON.stringify(that.data.message[index])
     wx.navigateTo({
@@ -67,14 +66,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // 获取首页的站点的id
     let that = this;
+    // 根据输入请求变压器信息
+    let siteId = options.siteId;
+    utils.request(`/trans-info/getlastinfo/${siteId}`, this.data, 'GET', (res) => {
+      that.setData({
+        message: res.data.data
+      })
+    });
+
+    // 根据点击的站点请求所有变压器信息
     let queryBean = JSON.parse(options.queryBean)
     that.setData({
       queryBean: queryBean
     })
-    let siteId = that.data.queryBean.siteId;
-    // 请求所有变压器信息
+    siteId = that.data.queryBean.siteId;
     utils.request(`/trans-info/getlastinfo/${siteId}`, this.data, 'GET', (res) => {
       that.setData({
         message: res.data.data

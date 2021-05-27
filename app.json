@@ -4,8 +4,7 @@
     "pages/warn/warn",
     "pages/mine/mine",
     "pages/detail/detail",
-    "pages/charts/charts",
-    "pages/test/test"
+    "pages/charts/charts"
   ],
   "window": {
     "backgroundTextStyle": "light",

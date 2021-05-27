@@ -17,13 +17,13 @@ export const request = (url, data, method, success, fail, loading = true) => {
                 console.log(res);
                 success(res)
             },
-        // fail:
-        //     function (res) {
-        //         // fail
-        //         console.log("请求失败");
-        //         console.log(res);
-        //         fail(res)
-        //     },
+        fail:
+            function (res) {
+                // fail
+                console.log("请求失败");
+                console.log(res);
+                fail(res)
+            },
         complete: function () {
             // complete
             // wx.showLoading({

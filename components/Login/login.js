@@ -45,9 +45,7 @@ function onLogin() {
         fail: function (res) {
 
         }
-    })
-    
-
+    }) 
 }
 
 function getUserInfo() {
