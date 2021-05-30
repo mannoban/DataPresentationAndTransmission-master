@@ -10,13 +10,16 @@ App({
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        
       }
     })
   },
+
+
+  
   globalData: {
     userInfo: null,
     hostPre: "http://10.111.31.1:8888//smart_power_diagnosis_platform/",
     token: "",
-    
   }
 })

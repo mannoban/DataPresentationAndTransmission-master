@@ -1,9 +1,14 @@
 /* pages/charts/charts.wxss */
-
+.alert{
+	display: flex;
+	height: 80rpx;
+	background-color: #FEFCEC;
+	align-items: center;
+	text-align: center;
+	color: #F8884D;
+}
   ec-canvas {
     position: absolute;
-    margin-top: 420rpx;
-    /* margin-left: 15rpx; */
     width: 730rpx;
     height: 1200rpx;
   }

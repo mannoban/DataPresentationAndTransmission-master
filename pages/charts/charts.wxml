@@ -1,7 +1,14 @@
 <!--pages/charts/charts.wxml-->
+<view class="alert">
+    <i-icon type="systemprompt" size="28" />
+    <text>完成授权登录即可查看详细信息</text>
+    <navigator style="display: inline-block;color: #ff6a00;text-decoration: underline;" open-type="switchTab"
+        url="../mine/mine" hover-class="navigator-hover">
+        (立即授权)</navigator>
+</view>
 
-<ec-canvas id="mychart-dom-pie" canvas-id="mychart-pie" ec="{{ ec }}">
-</ec-canvas>
+
+
 <view class="slideshow">
     <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
         <block wx:for="{{imgUrls}}">
@@ -11,3 +18,6 @@
         </block>
     </swiper>
 </view>
+
+<ec-canvas id="mychart-dom-pie" canvas-id="mychart-pie" ec="{{ ec }}">
+</ec-canvas>

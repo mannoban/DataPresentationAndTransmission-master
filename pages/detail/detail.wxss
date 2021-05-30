@@ -1,4 +1,15 @@
 /* pages/detail/detail.wxss */
+
+
+.alert{
+	display: flex;
+	height: 100rpx;
+	background-color: #FEFCEC;
+	align-items: center;
+	text-align: center;
+	color: #F8884D;
+}
+
 .detail-message{
 margin-top: 10rpx;
 }
@@ -20,5 +31,7 @@ margin-top: 10rpx;
 .temperature, .humidity,.smoke_concentration,.status{
 	font-size: 32rpx;
 }
+
+
 
 

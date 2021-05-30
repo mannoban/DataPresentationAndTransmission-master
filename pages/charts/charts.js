@@ -118,7 +118,6 @@ function initChart(canvas, width, height) {
 
   // 变压器详细信息接口
   utils.request(`/trans-info/gethistoryinfo/${siteId}/${transId}`, '', 'GET', (res) => {
-
     let message = res.data.data;
     option.series[0].data = [...message.temperature];
     option.series[1].data = [...message.humidity];

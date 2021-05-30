@@ -1,4 +1,12 @@
 <!--pages/detail/detail.wxml-->
+<view class="alert">
+    <i-icon type="systemprompt" size="28" />
+    <text>完成授权登录即可查看详细信息</text>
+    <navigator style="display: inline-block;color: #ff6a00;" open-type="switchTab" url="../mine/mine"
+        hover-class="navigator-hover">
+        (立即授权)</navigator>
+</view>
+
 <view class="detail-message" bindtap="goCharts" wx:for="{{message}}" wx:for-item="array" wx:for-index="index"
     data-index="{{index}}">
     <i-card title="变压器{{array.transId}}" i-class="detail-message" extra="变压器{{array.transId}}"

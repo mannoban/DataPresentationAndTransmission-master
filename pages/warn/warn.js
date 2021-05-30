@@ -130,6 +130,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
+
+  },
+
+  onShow: function () {
     let that = this; //解决this指向问题
     // 预警信息接口
     utils.request("/transfrom/getwarntrans", this.data, 'GET', (res) => {

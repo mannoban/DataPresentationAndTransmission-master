@@ -48,7 +48,7 @@
     <view class="monitoring_warning">
         <view class="monitoring_warning_text">监控预警</view>
         <view class="monitoring_warning_message">
-            <view class="warning" bindtap="warning">
+            <view class="warning">
                 <view class="warn_num">
                     {{headerMsg.commonSiteCount}}
                 </view>

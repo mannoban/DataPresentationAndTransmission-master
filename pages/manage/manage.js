@@ -60,9 +60,15 @@ Page({
         title: "提示",
         content: "请输入正确的站点名称"
       })
-    } else {
+    }
+    else {
       switch (str) {
         case "陕西科技大学站":
+          wx.navigateTo({
+            url: '../detail/detail?siteId=1',
+          })
+          break;
+        case "陕西科技大学":
           wx.navigateTo({
             url: '../detail/detail?siteId=1',
           })
@@ -72,9 +78,24 @@ Page({
             url: '../detail/detail?siteId=2',
           })
           break;
+        case "西安工业大学":
+          wx.navigateTo({
+            url: '../detail/detail?siteId=2',
+          })
+          break;
         case "陕西省西安市高陵区站":
           wx.navigateTo({
             url: '../detail/detail?siteId=3',
+          })
+          break;
+        case "陕西省西安市高陵区":
+          wx.navigateTo({
+            url: '../detail/detail?siteId=3',
+          })
+          break;
+        case "重庆市沙坪坝区重庆大学站":
+          wx.navigateTo({
+            url: '../detail/detail?siteId=4',
           })
           break;
         case "重庆大学站":
@@ -146,17 +167,32 @@ Page({
    */
   onLoad: function (options) {
 
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
     let that = this;
     // 获取所有站点信息
     utils.request("/ele-site/get_all_siteinfo", this.data, 'GET', (res) => {
+      let message = []
       for (const item of res.data.data) {
-        message.push({
+        let data = {
           siteId: item.siteId,
           location: item.location,
           transNumbers: item.transNumbers,
           status: item.status
           // status: that.transformBool(item.status),
-        });
+        }
+        message.push(data)
       }
       that.setData({
         message: message
@@ -169,19 +205,6 @@ Page({
         headerMsg: res.data.data
       })
     })
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
   },
 
   /**
@@ -217,5 +240,6 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+
 })

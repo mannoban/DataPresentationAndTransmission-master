@@ -1,12 +1,11 @@
-// index.js
+let utils = require('../../components/request/request')
 // 获取应用实例
 const app = getApp()
-// let login = require("../../components/Login/login")
-
 Page({
   data: {
     motto: 'Hello World',
     userInfo: {},
+    buttonBol: "block",
     display: "none",
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
@@ -15,6 +14,7 @@ Page({
   },
 
   onLoad: function () {
+    let that = this
     // 查看是否授权
     wx.getSetting({
       success(res) {
@@ -22,7 +22,6 @@ Page({
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称
           wx.getUserInfo({
             success: function (res) {
-              console.log(res.userInfo)
             }
           })
         }
@@ -32,11 +31,15 @@ Page({
 
   bindGetUserInfo(e) {
     let userInfo = e.detail.userInfo;
+    if (userInfo) {
+      this.login(userInfo)
+    }
     this.setData({
       userInfo: userInfo,
-      display: "block"
+      display: "block",
+      buttonBol: "none"
     })
-    console.log(this.data.userInfo);
+    // console.log(this.data.userInfo);
   },
 
   getUserProfile(e) {
@@ -44,12 +47,61 @@ Page({
     wx.getUserProfile({
       desc: '展示用户信息', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
       success: (res) => {
-        console.log(res)
         this.setData({
           userInfo: res.userInfo,
           hasUserInfo: true
         })
+      },
+      fail: (res) => {
+
+      }
+
+    })
+  },
+
+  login: function (personObj) {
+    let that = this
+    wx.login({
+      success: function (res) {
+        // success
+        wx.request({
+          url: 'http://www.zero-face.top:9999/smart_power_diagnosis_platform/user-info/code',
+          data: {
+            code: res.code,
+            avatarUrl: personObj.avatarUrl,
+            nickName: personObj.nickName,
+            language: personObj.language,
+            province: personObj.province,
+            city: personObj.city,
+          },
+          method: 'POST',
+          header: {
+            "Content-Type": "application/x-www-form-urlencoded", //POST请求的时候这样写
+          },
+          success: function (res) {
+            // console.log(res.data.data.openid);
+            // console.log(res.data.data.token);
+            app.globalData.token = res.data.data.token
+          },
+          fail: function () {
+            // fail
+          },
+        })
+
+
+
+      },
+      fail: function () {
+        // fail
+      },
+      complete: function () {
+        // complete
       }
     })
   }
+
+
 })
+
+
+

@@ -1,4 +1,6 @@
 <!--index.wxml-->
+<!-- <image src="../../img/bg.jpg"></image> -->
+
 <view class="userinfo">
   <block wx:if="{{canIUseOpenData}}" calss="userinfo-opendata">
     <view class="userinfo-avatar" bindtap="bindViewTap">
@@ -18,13 +20,14 @@
 </view>
 
 <i-cell-group class="person_message">
-  <i-cell title="昵称 / nickName:" icon="../img/home-Fill.png" value="{{userInfo.nickName}}"></i-cell>
-  <i-cell title="国籍 / country:" value="{{userInfo.country}}"></i-cell>
-  <i-cell title="省份 / province:" value="{{userInfo.province}}"></i-cell>
-  <i-cell title="城市 / city:" value="{{userInfo.city}}"></i-cell>
+  <i-cell title="昵称 / nickName:" icon="../img/home-Fill.png" value="{{userInfo.nickName}}" i-class="cell"></i-cell>
+  <i-cell title="国籍 / country:" value="{{userInfo.country}}" i-class="cell"></i-cell>
+  <i-cell title="省份 / province:" value="{{userInfo.province}}" i-class="cell"></i-cell>
+  <i-cell title="城市 / city:" value="{{userInfo.city}}" i-class="cell"></i-cell>
 </i-cell-group>
 
 <view class="footer">
-  <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" class="button">授权登录</button>
+  <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" class="button"
+    style="display: {{buttonBol}}">授权登录</button>
   <view wx:else>请升级微信版本</view>
 </view>
